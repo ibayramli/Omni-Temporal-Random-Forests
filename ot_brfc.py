@@ -7,7 +7,7 @@ from collections.abc import Iterable
 import numpy as np
 
 
-class OTBRFC:
+class OT_BRFC:
     def __init__(
                  self,
                  feats_fixed=None,
