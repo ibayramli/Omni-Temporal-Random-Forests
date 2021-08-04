@@ -143,3 +143,4 @@ class OTBRFC:
 
     def score(self, X, y):
         return (self.predict(X) == y).mean() 
+
