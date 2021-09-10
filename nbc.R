@@ -68,7 +68,7 @@ nlp = read_tsv(file_names$nlp) %>% rename(concept_code = concept_id) # NLP conce
 
 # Add Case definitions
 
-case_def <- read_csv(paste(working_dir, "suicide_ICDdefinition_20190412.csv", sep='/'))
+case_def <- read_csv(paste(working_dir, "suicide_definitions.csv", sep='/'))
 case_def$ICD_code = gsub("\\.","", case_def$`ICD_code\tconcept_code\tconcept_name\tcategory`)
 case_def$ICD_code = gsub("\\\t.*","", case_def$ICD_code) 
 
@@ -89,7 +89,6 @@ addAge <- function(demographics){
   demographics[!death_missing, 'age'] = as.numeric(demographics$sdeath_date[!death_missing] - demographics$sbirth_date[!death_missing],
                                                    unit='days') / 366
   # not deceased / missing death date
-  last_date = as.Date('12/31/2019', format = "%m/%d/%Y")
   demographics[death_missing, 'age'] = as.numeric(last_date - demographics$sbirth_date[death_missing], 
                                                    unit='days') / 366
   return(demographics)
